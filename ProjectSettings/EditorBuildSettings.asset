@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/TitleScreen.unity
+    guid: d457ada8d70158743ba8693eacdb872b
+  - enabled: 1
     path: Assets/Scenes/HiveMindMain.unity
     guid: 1ff593a7a55f047429b7a8536a4b29ea
   m_configObjects: {}
