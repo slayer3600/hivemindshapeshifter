@@ -23,15 +23,25 @@ public class PlayerController : MonoBehaviour {
     private int currentCharacterIndex = 0;
     private bool moving = false;
     private Animator textTrapAnim;
+    private Animator playerAnim;
     private TextTrapScript textTrap;
     private GameUIManager gameUIManager;
+    private CharacterType currentCharacter = CharacterType.Bee;
+
+    enum CharacterType
+    {
+        Bee,
+        Barnacle,
+        Ladybug,
+        Saw
+    }
 
 
     // Use this for initialization
     void Start () {
 
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-        spriteRenderer.sprite = characters[currentCharacterIndex];
+        playerAnim = gameObject.GetComponent<Animator>();
         textTrapAnim = GameObject.Find("dialogTextTrap").GetComponent<Animator>();
         textTrap = GameObject.Find("dialogTextTrap").GetComponent<TextTrapScript>();
         gameUIManager = GameObject.Find("UIManager").GetComponent<GameUIManager>();
@@ -214,7 +224,8 @@ public class PlayerController : MonoBehaviour {
     {
         currentCharacterIndex = (currentCharacterIndex < 3) ? currentCharacterIndex + 1 : 0;
 
-        spriteRenderer.sprite = characters[currentCharacterIndex];
+        playerAnim.SetInteger("character", currentCharacterIndex);
+        currentCharacter = (CharacterType)currentCharacterIndex;
     }
 
     private void OpenTextTrap()
